@@ -41,7 +41,6 @@ passport.deserializeUser(async (id, done) => {
   const user = await UserModel.findById(id)
   done(null, user)
 })
-
 passport.use('login', loginStrat)
 passport.use('signup', signupStrat)
 

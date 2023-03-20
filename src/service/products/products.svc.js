@@ -1,9 +1,31 @@
 import { productDaoContainer } from '../service.js'
 
-export async function getProductListSvc(req){
+export async function getProductListSvc(filters){
   let data
   try {
-    data = req.params.id ? await productDaoContainer.find({_id: req.params.id}) : await productDaoContainer.find()
+    data = await productDaoContainer.find(filters)
+  } catch (error) {
+    console.log(error)
+  }
+  return data
+}
+
+export async function getProductByIdSvc(id){
+  let data
+  try {
+    data = await productDaoContainer.findById(id)
+    console.log(id)
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+  }
+  return data
+}
+
+export async function createProductSvc(prod){
+  let data
+  try {
+    data = await productDaoContainer.create(prod)
   } catch (error) {
     console.log(error)
   }

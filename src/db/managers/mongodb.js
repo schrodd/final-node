@@ -10,8 +10,8 @@ class MongoManager {
   find = async (filters) => {
     return processMongoQuery(await this.model.find(filters))
   }
-  findOne = async (filters) => {
-    return this.model.findOne(filters)
+  findById = async (id) => {
+    return await this.model.findById(id)
   }
   create = async (element) => {
     const doc = new this.model(element)

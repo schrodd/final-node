@@ -13,7 +13,7 @@ productRouter.post('/', createProductCtrl)
 ///// R E A D /////
 productRouter.get('/', getProductListCtrl)
 productRouter.get('/:id', getProductByIdCtrl)
-productRouter.get('/category/:category', getProductByCatCtrl)
+productRouter.get('/category/:cat', getProductByCatCtrl)
 ///// U P D A T E /////
 productRouter.put('/:id', updateProductCtrl)
 ///// D E L E T E /////
