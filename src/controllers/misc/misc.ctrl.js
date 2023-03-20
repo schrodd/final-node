@@ -3,9 +3,18 @@ export function notLoggedInCtrl(req, res) {
 }
 
 export function loginFailedCtrl(req, res) {
-  res.status(404).json({error: `Login failed. Check login data`})
+  res.status(404).json({error: `Login failed. Check login data.`})
 }
 
 export function loginSuccessCtrl(req, res) {
   res.status(200).json({success: `Logged in successfully. /products and other routes available now.`})
+}
+
+export function logoutCtrl(req, res) {
+  if (req.user != undefined) {
+    req.session.destroy(e => e && console.log(e))
+    res.status(200).json({success: `Logged out successfully.`})
+  } else {
+    res.status(200).json({success: `You were not logged in...`})
+  }
 }

@@ -2,7 +2,7 @@ import { Router } from 'express'
 import passport from 'passport'
 import productRouter from './products/router.js'
 import { redirIfLogged, passIfLogged } from './middlewares.js'
-import { notLoggedInCtrl, loginFailedCtrl, loginSuccessCtrl } from '../controllers/misc/misc.ctrl.js'
+import { notLoggedInCtrl, loginFailedCtrl, loginSuccessCtrl, logoutCtrl } from '../controllers/misc/misc.ctrl.js'
 // import userRouter from './users/router.js'
 
 const mainRouter = new Router()
@@ -19,6 +19,7 @@ mainRouter.post('/login', passport.authenticate('login', ppLoginFailedOptions), 
 mainRouter.post('/login-failed', loginFailedCtrl)
 mainRouter.post('/register', passport.authenticate('signup', ppRegisterFailedOptions), loginSuccessCtrl)
 mainRouter.post('/register-failed', loginFailedCtrl)
+mainRouter.get('/logout', logoutCtrl)
 
 
 export default mainRouter

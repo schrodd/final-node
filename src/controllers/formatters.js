@@ -16,6 +16,5 @@ export function templateDataFormatter(req) {
 }
 
 export function userFormatter(username, password, body) {
-  return ({ username, password, name: body.name, email: body.email, address: body.address,
-  age: body.age, phone: body.phone, photo: body.photo, cart: [] })
+  return ({ username, password, name: body.name, email: body.email, phone: body.phone, cart: [] })
 }
