@@ -3,7 +3,11 @@ export function notLoggedInCtrl(req, res) {
 }
 
 export function loginFailedCtrl(req, res) {
-  res.status(404).json({error: `Login failed. Check login data.`})
+  res.status(404).json({error: `Login failed.`, message: req.session.messages.at(-1)})
+}
+
+export function registerFailedCtrl(req, res) {
+  res.status(404).json({error: `Register failed.`, message: req.session.messages.at(-1)})
 }
 
 export function loginSuccessCtrl(req, res) {

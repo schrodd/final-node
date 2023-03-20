@@ -10,7 +10,7 @@ export const signupStrat = new LocalStrategy(
   { passReqToCallback: true }, // allows access to request from callback
   async (req, username, password, done) => {
     const user = await UserModel.findOne({ username })
-    if (user) return done(null, false, { message: 'User exists'})
+    if (user) return done(null, false, { message: 'Username exists. Please pick another.' })
     if (!user) {
       // if it doesnt exist, creates it
       bcrypt.hash(password, saltRounds, async function (err, hash) {
@@ -31,13 +31,10 @@ export const loginStrat = new LocalStrategy(
   async (username, password, done) => {
     try {
       const user = await UserModel.findOne({ username })
-      console.log(user)
       if (!user) {
-        console.log("User not found with username " + username)
-        return done(null, false, { message: "No se ha encontrado el usuario" })
-      } else if (!bcrypt.compare(password, user.password)) {
-        console.log("Invalid Password")
-        return done(null, false, { message: "Contraseña incorrecta" })
+        return done(null, false, { message: `User not found with username ${username}.` })
+      } else if (!await bcrypt.compare(password, user.password)) {
+        return done(null, false, { message: "Wrong password." })
       } else return done(null, user)
     }
     catch (error) {
