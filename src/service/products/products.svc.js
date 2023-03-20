@@ -14,8 +14,6 @@ export async function getProductByIdSvc(id){
   let data
   try {
     data = await productDaoContainer.findById(id)
-    console.log(id)
-    console.log(data)
   } catch (error) {
     console.log(error)
   }

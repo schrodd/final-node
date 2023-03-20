@@ -4,15 +4,15 @@ const productCollection = "products";
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
-    isRequired: true,
+    required: true,
   },
   price: {
     type: Number,
-    isRequired: true,
+    required: true,
   },
   category: {
     type: String,
-    isRequired: true,
+    required: true,
   },
 });
 
