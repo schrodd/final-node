@@ -10,5 +10,6 @@ export const {
   NODEMAILER_PASSWORD,
   DATABASE,
   MONGODB_URL,
-  PORT
+  PORT,
+  SESSION_DURATION
 } = process.env
