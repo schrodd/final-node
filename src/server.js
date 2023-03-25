@@ -20,6 +20,7 @@ app.use(cookieParser()) // allow cookie handling
 app.use(express.urlencoded({extended: true})) // allow URL handling as objects
 app.use(express.static('./public')) // serve static files
 
+
 // configure session (keep this order, first config session then init passport)
 app.use(session({
     store: MongoStore.create({
