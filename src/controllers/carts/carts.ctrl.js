@@ -28,7 +28,7 @@ export async function getCartCtrl(req, res) {
   }
 }
 
-export async function updateCartCtrl(req, res) {
+export async function updateCartCtrl(req, res) { 
   const data = await updateCartSvc(req.params.id, req.body)
   if (data) {
     res.status(200).json({status: "Cart edited successfully", data})
