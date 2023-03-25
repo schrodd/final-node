@@ -37,8 +37,11 @@ Método: POST\
 Body: 
 ```
 {
-  "username": "tuUsuario",
-  "password": "1234"
+  "username": [tu usuario],
+  "password": [tu contraseña],
+  "name": [tu nombre],
+  "phone": [tu telefono],
+  "email": [tu email]
 }
 ```
 
