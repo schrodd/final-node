@@ -22,10 +22,14 @@ Método: POST\
 Body: \
 ```
 {
-  "username": "tuUsuario",
-  "password": "1234"
+  "username": [tu usuario],
+  "password": [tu contraseña],
+  "name": [tu nombre],
+  "phone": [tu telefono],
+  "email": [tu email]
 }
 ```
+
 
 Si el registro es exitoso, se iniciará una sesión automáticamente.
 
@@ -37,11 +41,8 @@ Método: POST\
 Body: 
 ```
 {
-  "username": [tu usuario],
-  "password": [tu contraseña],
-  "name": [tu nombre],
-  "phone": [tu telefono],
-  "email": [tu email]
+  "username": "tuUsuario",
+  "password": "1234"
 }
 ```
 
