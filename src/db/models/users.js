@@ -4,25 +4,24 @@ const userCollection = "users";
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    isRequired: true,
+    required: true,
   },
   password: {
     type: String,
-    isRequired: true,
+    required: true,
   },
   name: {
     type: String,
-    isRequired: true,
+    required: true,
   },
   phone: {
     type: String,
-    isRequired: true,
+    required: true,
   },
   email: {
     type: String,
-    isRequired: true,
-  },
-  cart: [{ type: Object }]
+    required: true,
+  }
 });
 
 const UserModel = mongoose.model(userCollection, userSchema);

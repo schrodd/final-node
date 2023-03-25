@@ -1,5 +1,6 @@
 import { Router } from 'express'
-import controllers from '../../controllers/index.js'
+import { passIfLogged } from '../middlewares.js'
+import { createOrderCtrl, getOrderListCtrl, getOrderCtrl, updateOrderCtrl, deleteOrderCtrl } from '../../controllers/orders/orders.ctrl.js'
 
 const orderRouter = new Router()
 
@@ -7,13 +8,13 @@ const orderRouter = new Router()
 // check admin status !!!!!
 
 ///// C R E A T E /////
-orderRouter.post('/', controllers.getorderListApiCtrl)
+orderRouter.post('/:id', passIfLogged, createOrderCtrl)
 ///// R E A D /////
-orderRouter.get('/', controllers.getorderListApiCtrl)
-orderRouter.get('/:id', controllers.getorderListApiCtrl)
+orderRouter.get('/', passIfLogged, getOrderListCtrl)
+orderRouter.get('/:id', passIfLogged, getOrderCtrl)
 ///// U P D A T E /////
-orderRouter.put('/:id', controllers.getorderListApiCtrl)
+orderRouter.put('/:id', passIfLogged, updateOrderCtrl)
 ///// D E L E T E /////
-orderRouter.delete('/:id', controllers.getorderListApiCtrl)
+orderRouter.delete('/:id', passIfLogged, deleteOrderCtrl)
 
 export default orderRouter

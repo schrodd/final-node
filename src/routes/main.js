@@ -1,18 +1,18 @@
 import { Router } from 'express'
 import passport from 'passport'
 import productRouter from './products/router.js'
-import { redirIfLogged, passIfLogged } from './middlewares.js'
+import cartRouter from './carts/router.js'
+import orderRouter from './orders/router.js'
+import { redirIfLogged } from './middlewares.js'
 import { notLoggedInCtrl, loginFailedCtrl, loginSuccessCtrl, logoutCtrl, registerFailedCtrl } from '../controllers/misc/misc.ctrl.js'
-// import userRouter from './users/router.js'
 
 const mainRouter = new Router()
 const ppLoginFailedOptions = { failureRedirect: '/login-failed', failureMessage: true }
 const ppRegisterFailedOptions = { failureRedirect: '/register-failed', failureMessage: true }
 
 mainRouter.use('/products', productRouter)
-// mainRouter.use('/users', userRouter)
-// mainRouter.use('/orders', orderRouter)
-// mainRouter.use('/carts', cartRouter)
+mainRouter.use('/carts', cartRouter)
+mainRouter.use('/orders', orderRouter)
 
 mainRouter.get('/', redirIfLogged, notLoggedInCtrl)
 mainRouter.post('/login', passport.authenticate('login', ppLoginFailedOptions), loginSuccessCtrl)

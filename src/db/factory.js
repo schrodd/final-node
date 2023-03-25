@@ -1,26 +1,25 @@
 // Factory
 import ProductModel from "./models/products.js"
-// import UserModel from './models/userModel.js'
-// import OrderModel from './models/orderModel.js'
+import CartModel from "./models/carts.js"
+import OrderModel from "./models/orders.js"
 import ClientMongo from "./clients/mongodb.js"
 
 export async function createFactory(DB) {
   let productDaoContainer
-  // let userDaoContainer
-  // let orderDaoContainer
+  let cartDaoContainer
+  let orderDaoContainer
   switch (DB) {
     case "MONGODB":
       const { ProductDao } = await import("./dao/products.js")
-      // const { UserDao } = await import("./dao/userDao.js")
-      // const { OrderDao } = await import("./dao/orderDao.js")
+      const { CartDao } = await import("./dao/carts.js")
+      const { OrderDao } = await import("./dao/orders.js")
       const client = new ClientMongo();
       await client.connect();
       productDaoContainer = new ProductDao(ProductModel)
-      // userDaoContainer = new UserDao(UserModel)
-      // orderDaoContainer = new OrderDao(OrderModel)
+      cartDaoContainer = new CartDao(CartModel)
+      orderDaoContainer = new OrderDao(OrderModel)
       break;
     default: break;
   }
-  // return { userDaoContainer, productDaoContainer, orderDaoContainer }
-  return { productDaoContainer }
+  return { productDaoContainer, cartDaoContainer, orderDaoContainer }
 }
