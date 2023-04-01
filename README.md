@@ -31,7 +31,7 @@ Body: \
 ```
 
 
-Si el registro es exitoso, se iniciará una sesión automáticamente.
+Si el registro es exitoso, un mensaje se lo indicará, pero la sesión no iniciará automáticamente.
 
 ### Iniciar sesión
 Una vez creada la cuenta puede iniciar sesión con sus credenciales.
@@ -46,13 +46,9 @@ Body:
 }
 ```
 
-Una vez iniciada la sesión, será redirigido al listado de productos.
-
-### Cerrar sesión
-Cierra la sesión activa inmediatamente.
-
-Endpoint: /logout\
-Método: POST
+Una vez iniciada la sesión, se le dará una llave JWT que deberá incluir en el header de las siguientes peticiones.\
+Nombre del header: Authorization\
+Valor del header: Bearer [jwt token]
 
 ## Productos
 
