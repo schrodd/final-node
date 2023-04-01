@@ -1,12 +1,9 @@
 import { Router } from 'express'
 import { getProductListCtrl, getProductByIdCtrl, createProductCtrl, getProductByCatCtrl, updateProductCtrl, deleteProductCtrl } from '../../controllers/products/products.ctrl.js'
-import { passIfLogged } from '../middlewares.js'
+import { jwtMiddleware } from '../../lib/jwt.js'
 
 const productRouter = new Router()
-productRouter.use(passIfLogged)
-
-// check callbacks !!!!!
-// check admin status !!!!!
+productRouter.use(jwtMiddleware)
 
 ///// C R E A T E /////
 productRouter.post('/', createProductCtrl)

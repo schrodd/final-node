@@ -18,3 +18,7 @@ export function templateDataFormatter(req) {
 export function userFormatter(username, password, body) {
   return ({ username, password, name: body.name, email: body.email, phone: body.phone, cart: [] })
 }
+
+export function userFormatterJwt(user, password) {
+  return ({ username: user.username, password, name: user.name, email: user.email, phone: user.phone, cart: [] })
+}

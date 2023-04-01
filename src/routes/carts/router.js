@@ -1,20 +1,18 @@
 import { Router } from 'express'
-import { passIfLogged } from '../middlewares.js'
 import { createCartCtrl, getCartListCtrl, getCartCtrl, updateCartCtrl, deleteCartCtrl } from '../../controllers/carts/carts.ctrl.js'
+import { jwtMiddleware } from '../../lib/jwt.js'
 
 const cartRouter = new Router()
-
-// check callbacks !!!!!
-// check admin status !!!!!
+cartRouter.use(jwtMiddleware)
 
 ///// C R E A T E /////
-cartRouter.post('/', passIfLogged, createCartCtrl)
+cartRouter.post('/', createCartCtrl)
 ///// R E A D /////
-cartRouter.get('/', passIfLogged, getCartListCtrl)
-cartRouter.get('/:id', passIfLogged, getCartCtrl)
+cartRouter.get('/', getCartListCtrl)
+cartRouter.get('/:id', getCartCtrl)
 ///// U P D A T E /////
-cartRouter.put('/:id', passIfLogged, updateCartCtrl)
+cartRouter.put('/:id', updateCartCtrl)
 ///// D E L E T E /////
-cartRouter.delete('/:id', passIfLogged, deleteCartCtrl)
+cartRouter.delete('/:id', deleteCartCtrl)
 
 export default cartRouter

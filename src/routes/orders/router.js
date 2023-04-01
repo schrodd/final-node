@@ -1,20 +1,18 @@
 import { Router } from 'express'
-import { passIfLogged } from '../middlewares.js'
 import { createOrderCtrl, getOrderListCtrl, getOrderCtrl, updateOrderCtrl, deleteOrderCtrl } from '../../controllers/orders/orders.ctrl.js'
+import { jwtMiddleware } from '../../lib/jwt.js'
 
 const orderRouter = new Router()
-
-// check callbacks !!!!!
-// check admin status !!!!!
+orderRouter.use(jwtMiddleware)
 
 ///// C R E A T E /////
-orderRouter.post('/:id', passIfLogged, createOrderCtrl)
+orderRouter.post('/:id', createOrderCtrl)
 ///// R E A D /////
-orderRouter.get('/', passIfLogged, getOrderListCtrl)
-orderRouter.get('/:id', passIfLogged, getOrderCtrl)
+orderRouter.get('/', getOrderListCtrl)
+orderRouter.get('/:id', getOrderCtrl)
 ///// U P D A T E /////
-orderRouter.put('/:id', passIfLogged, updateOrderCtrl)
+orderRouter.put('/:id', updateOrderCtrl)
 ///// D E L E T E /////
-orderRouter.delete('/:id', passIfLogged, deleteOrderCtrl)
+orderRouter.delete('/:id', deleteOrderCtrl)
 
 export default orderRouter
